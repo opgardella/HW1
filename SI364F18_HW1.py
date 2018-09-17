@@ -5,8 +5,9 @@
 
 #################################
 
-## List below here, in a comment/comments, the people you worked with on this assignment AND any resources you used to find code (50 point deduction for not doing so). If none, write "None".
-
+## List below here, in a comment/comments, the people you worked with on this assignment
+## AND any resources you used to find code (50 point deduction for not doing so). If none, write "None".
+# I used stack overflow to help with a few of the problems
 
 ## [PROBLEM 1] - 150 points
 ## Below is code for one of the simplest possible Flask applications.
@@ -20,8 +21,12 @@ import json
 app = Flask(__name__)
 app.debug = True
 
-@app.route('/class')
+@app.route('/')
 def hello_to_you():
+    return 'Hello!'
+
+@app.route('/class')
+def class_function():
     return 'Welcome to SI 364!'
 
 
@@ -67,22 +72,24 @@ def movie_function(movie):
     #then see a page that says "Double your favorite number is 4". Careful about types in your Python code!
 ## You can assume a user will always enter a number only.
 
-@app.route('/question')
+@app.route('/question', methods = ['GET', 'POST'])
 def question_function():
-    return """ <form action="/result" method='POST'>
+    html_form = """ <form action="" method='POST'>
     Enter your favorite number: <br>
     <input type="text" name="number"><br>
     <input type="submit" value="Submit">
     </form>"""
 
-# @app.route('/result', methods = ['GET', 'POST'])
-# def result_form1():
-#     if request.method == "POST":
-#         number = request.form.get("number")
-#         # print (str(type(number)))
-#         double_number = int(number)*2
-#         return "Double your favorite number is " + str(double_number)
-#     return "No number entered"
+    return_str = ""
+
+    if request.method == "POST":
+        number = request.form.get("number")
+        # print (str(type(number)))
+        double_number = int(number)*2
+        return_str += "Double your favorite number is " + str(double_number)
+        return return_str
+
+    return html_form
 
 
 
