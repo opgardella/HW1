@@ -7,7 +7,11 @@
 
 ## List below here, in a comment/comments, the people you worked with on this assignment
 ## AND any resources you used to find code (50 point deduction for not doing so). If none, write "None".
-# I used stack overflow to help with a few of the problems
+# I used stack overflow to help with a few of the problems, including:
+# https://stackoverflow.com/questions/13242412/how-to-take-checkboxes-in-python
+# https://stackoverflow.com/questions/36674846/how-can-i-check-if-some-checkboxes-in-html-are-checked
+# https://stackoverflow.com/questions/12733184/multiplication-in-python
+# Did not work with anyone
 
 ## [PROBLEM 1] - 150 points
 ## Below is code for one of the simplest possible Flask applications.
@@ -46,7 +50,8 @@ def class_function():
 # }
 
 ## You should use the iTunes Search API to get that data.
-## Docs for that API are here: https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
+## Docs for that API are here:
+## https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
 ## Of course, you'll also need the requests library and knowledge of how to make a request to a REST API for data.
 
 ## Run the app locally (repeatedly) and try these URLs out!
@@ -56,6 +61,7 @@ def movie_function(movie):
     base_url = "https://itunes.apple.com/search"
     params_diction = {}
     params_diction['term'] = movie
+    params_diction['entity'] = 'movie'
     resp = requests.get(base_url,params=params_diction)
     text = resp.text
     python_obj = json.loads(text)
